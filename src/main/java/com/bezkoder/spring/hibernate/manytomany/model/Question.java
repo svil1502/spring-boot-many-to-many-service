@@ -8,8 +8,8 @@ import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "tags")
-public class Tag {
+@Table(name = "questions")
+public class Question {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +23,13 @@ public class Tag {
           CascadeType.PERSIST,
           CascadeType.MERGE
       },
-      mappedBy = "tags")
-  @JsonIgnore
-  private Set<Tutorial> tutorials = new HashSet<>();
+      mappedBy = "questions")
 
-  public Tag() {
+
+  @JsonIgnore
+  private Set<Media> medias = new HashSet<>();
+
+  public Question() {
 
   }
 
@@ -43,12 +45,12 @@ public class Tag {
     this.name = name;
   }
 
-  public Set<Tutorial> getTutorials() {
-    return tutorials;
+  public Set<Media> getMedias() {
+    return medias;
   }
 
-  public void setTutorials(Set<Tutorial> tutorials) {
-    this.tutorials = tutorials;
+  public void setMedias(Set<Media> medias) {
+    this.medias = medias;
   }  
   
 }

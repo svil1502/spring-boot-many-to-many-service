@@ -6,8 +6,8 @@ import java.util.Set;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tutorials")
-public class Tutorial {
+@Table(name = "media")
+public class Media {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,15 +23,15 @@ public class Tutorial {
   private boolean published;
 
   @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-  @JoinTable(name = "tutorial_tags", joinColumns = { @JoinColumn(name = "tutorial_id") }, inverseJoinColumns = {
-      @JoinColumn(name = "tag_id") })
-  private Set<Tag> tags = new HashSet<>();
+  @JoinTable(name = "media_question", joinColumns = { @JoinColumn(name = "media_id") }, inverseJoinColumns = {
+      @JoinColumn(name = "question_id") })
+  private Set<Question> questions = new HashSet<>();
 
-  public Tutorial() {
+  public Media() {
 
   }
 
-  public Tutorial(String title, String description, boolean published) {
+  public Media(String title, String description, boolean published) {
     this.title = title;
     this.description = description;
     this.published = published;
@@ -65,30 +65,30 @@ public class Tutorial {
     this.published = isPublished;
   }
 
-  public Set<Tag> getTags() {
-    return tags;
+  public Set<Question> getQuestions() {
+    return questions;
   }
 
-  public void setTags(Set<Tag> tags) {
-    this.tags = tags;
+  public void setQuestions(Set<Question> questions) {
+    this.questions = questions;
   }
 
-  public void addTag(Tag tag) {
-    this.tags.add(tag);
-    tag.getTutorials().add(this);
+  public void addQuestion(Question question) {
+    this.questions.add(question);
+    question.getMedias().add(this);
   }
 
-  public void removeTag(long tagId) {
-    Tag tag = this.tags.stream().filter(t -> t.getId() == tagId).findFirst().orElse(null);
-    if (tag != null) {
-      this.tags.remove(tag);
-      tag.getTutorials().remove(this);
+  public void removeQuestion(long questionId) {
+    Question question = this.questions.stream().filter(t -> t.getId() == questionId).findFirst().orElse(null);
+    if (question != null) {
+      this.questions.remove(question);
+      question.getMedias().remove(this);
     }
   }
 
   @Override
   public String toString() {
-    return "Tutorial [id=" + id + ", title=" + title + ", desc=" + description + ", published=" + published + "]";
+    return "Media [id=" + id + ", title=" + title + ", desc=" + description + ", published=" + published + "]";
   }
 
 }
