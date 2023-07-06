@@ -13,5 +13,4 @@ public interface MediaRepository extends JpaRepository<Media, Long> {
   
   List<Media> findMediasByQuestionsId(Long questionId);
 
-  List<Media> findMediaWithAnswers();
 }

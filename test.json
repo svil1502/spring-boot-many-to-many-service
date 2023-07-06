@@ -1,7 +1,27 @@
 
     {
-      "name": "How many?!!",
-      "answers": ["yes", "two"]
+      "question": "How many?!!",
+      "position": 1,
+      "answers": [
+        {
+         "answer" : "yes2",
+        "isRight": true
+        },
+        {
+          "answer" : "yes3",
+          "isRight": false
+        }
+      ],
+      "results": [
+        {
+          "result" : "yes2",
+          "countRightAnswer" : 1
+        },
+        {
+          "result" : "yes3",
+          "countRightAnswer": 2
+        }
+      ]
     }
 
 

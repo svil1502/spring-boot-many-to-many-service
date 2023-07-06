@@ -80,7 +80,7 @@ public class AnswerController {
     }
 
     @DeleteMapping("/questions/{questionId}/answers")
-    public ResponseEntity<List<Answer>> deleteAllanswerssOfQuestion(@PathVariable(value = "questionId") Long questionId) {
+    public ResponseEntity<List<Answer>> deleteAllanswersOfQuestion(@PathVariable(value = "questionId") Long questionId) {
         if (!questionRepository.existsById(questionId)) {
             throw new ResourceNotFoundException("Not found Question with id = " + questionId);
         }

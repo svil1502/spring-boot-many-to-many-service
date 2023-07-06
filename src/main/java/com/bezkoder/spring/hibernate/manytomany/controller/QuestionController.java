@@ -119,12 +119,6 @@ public class QuestionController {
     @PostMapping("/medias/{mediaId}/questions/answers")
     public void addJsonQuestionAnwer(@PathVariable(value = "mediaId") Long mediaId, @RequestBody QuestionRequestDto body) throws IOException {
 
-
-
-
-
-
-
         if (body != null) {
             QuestionRequestDto json = body;
 
@@ -152,9 +146,7 @@ public class QuestionController {
                 answerRepository.save(newanswer);
             }
 
-            // Profile p = new ObjectMapper().readValue(json, Profile.class);
-            // и дальше работаете с объектом...
-          //  return new ResponseEntity<>(newQuestion, HttpStatus.CREATED);
+
         }
     }
 
